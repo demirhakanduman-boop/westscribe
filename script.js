@@ -9,13 +9,57 @@ function getThemeByTime() {
     return hour >= 19 || hour < 7 ? 'dark' : 'light';
 }
 
-const savedLang = localStorage.getItem('lang') || 'tr';
+const savedLang = localStorage.getItem('lang') || 'en';
 const initialTheme = getThemeByTime();
 
 html.setAttribute('data-theme', initialTheme);
 html.setAttribute('data-lang', savedLang);
 updateThemeToggleButton(initialTheme);
-updateLangToggleButton(savedLang);
+updateAllText(savedLang);
+
+// Load title carousel
+function loadTitleCarousel() {
+    fetch('titlelist.txt')
+        .then(response => response.text())
+        .then(data => {
+            const titles = data.split('\n').filter(line => line.trim()).map(line => line.trim());
+            
+            // Sort alphabetically
+            titles.sort((a, b) => a.localeCompare(b, 'tr'));
+            
+            // Divide into columns with 7 items each
+            const container = document.getElementById('titleCarousel');
+            container.innerHTML = '';
+            
+            const itemsPerColumn = 7;
+            const numColumns = Math.ceil(titles.length / itemsPerColumn);
+            
+            for (let col = 0; col < numColumns; col++) {
+                const column = document.createElement('div');
+                column.className = 'carousel-column';
+                
+                for (let row = 0; row < itemsPerColumn; row++) {
+                    const index = col * itemsPerColumn + row;
+                    if (index < titles.length) {
+                        const titleDiv = document.createElement('div');
+                        titleDiv.className = 'carousel-title';
+                        titleDiv.textContent = titles[index];
+                        column.appendChild(titleDiv);
+                    }
+                }
+                
+                container.appendChild(column);
+            }
+        })
+        .catch(error => console.error('Titlelist loading error:', error));
+}
+
+// Load carousel on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadTitleCarousel);
+} else {
+    loadTitleCarousel();
+}
 
 // Tema değiştir
 themeToggle.addEventListener('click', () => {
@@ -27,14 +71,30 @@ themeToggle.addEventListener('click', () => {
 });
 
 // Dil değiştir
-langToggle.addEventListener('click', () => {
-    const currentLang = html.getAttribute('data-lang');
-    const newLang = currentLang === 'tr' ? 'en' : 'tr';
-    
-    html.setAttribute('data-lang', newLang);
-    localStorage.setItem('lang', newLang);
-    updateLangToggleButton(newLang);
-    updateAllText(newLang);
+langToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const wrapper = document.querySelector('.lang-toggle-wrapper');
+    wrapper.classList.toggle('active');
+});
+
+// Dil seçeneklerine tıklama
+document.querySelectorAll('.lang-option').forEach(option => {
+    option.addEventListener('click', () => {
+        const newLang = option.getAttribute('data-lang');
+        html.setAttribute('data-lang', newLang);
+        localStorage.setItem('lang', newLang);
+        updateAllText(newLang);
+        
+        // Dropdown'u kapat
+        const wrapper = document.querySelector('.lang-toggle-wrapper');
+        wrapper.classList.remove('active');
+    });
+});
+
+// Dışarıya tıklandığında dropdown'u kapat
+document.addEventListener('click', () => {
+    const wrapper = document.querySelector('.lang-toggle-wrapper');
+    wrapper.classList.remove('active');
 });
 
 function updateThemeToggleButton(theme) {
@@ -44,17 +104,13 @@ function updateThemeToggleButton(theme) {
     }
 }
 
-function updateLangToggleButton(lang) {
-    langToggle.textContent = lang === 'tr' ? 'EN' : 'TR';
-}
-
 // Tüm metinleri dile göre güncelle
 function updateAllText(lang) {
-    document.querySelectorAll('[data-tr][data-en]').forEach(element => {
+    document.querySelectorAll('[data-tr][data-en]:not(.contact-link)').forEach(element => {
         if (lang === 'tr') {
-            element.textContent = element.getAttribute('data-tr');
+            element.innerHTML = element.getAttribute('data-tr');
         } else {
-            element.textContent = element.getAttribute('data-en');
+            element.innerHTML = element.getAttribute('data-en');
         }
     });
     
@@ -72,21 +128,12 @@ function updateAllText(lang) {
 }
 
 function updateNavLinks(lang) {
-    const navTexts = {
-        tr: {
-            'nav-contact': 'İletişim'
-        },
-        en: {
-            'nav-contact': 'Contact'
-        }
-    };
-    
-    Object.keys(navTexts[lang]).forEach(key => {
-        const element = document.querySelector(`.${key}`);
-        if (element) {
-            element.textContent = navTexts[lang][key];
-        }
-    });
+    const contactLink = document.querySelector('.nav-contact');
+    if (contactLink) {
+        const text = lang === 'tr' ? 'İletişim' : 'Contact';
+        contactLink.setAttribute('aria-label', text);
+        contactLink.setAttribute('title', text);
+    }
 }
 
 // SCROLL FADE ANIMATIONS
@@ -169,11 +216,124 @@ const revealOnScroll = () => {
 window.addEventListener('scroll', revealOnScroll);
 revealOnScroll(); // Sayfa yüklendiğinde bir kez çalıştır
 
-// CURSOR EFFECT (İsteğe bağlı - Modern tarayıcılar için)
+// Contact link click handler - works with image elements
+document.addEventListener('click', (e) => {
+    const contactLink = e.target.closest('.contact-link');
+    if (contactLink) {
+        e.preventDefault();
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+
+// FORM HANDLER (Flask Backend)
 document.addEventListener('DOMContentLoaded', () => {
-    // CSS animasyonları zaten çalışıyor, ek JavaScript zorunlu değil
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const submitButton = contactForm.querySelector('.submit-button');
+            const originalTextTr = submitButton.getAttribute('data-tr');
+            const originalTextEn = submitButton.getAttribute('data-en');
+            const currentLang = html.getAttribute('data-lang');
+            
+            submitButton.disabled = true;
+            submitButton.textContent = currentLang === 'tr' ? 'Gönderiliyor...' : 'Sending...';
+            
+            const formData = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                message: document.getElementById('contactMessage').value
+            };
+            
+            // Flask backend'e gönder
+            fetch('http://localhost:5000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Email sent successfully');
+                    // Form'u fade out ve success mesajını fade in
+                    contactForm.classList.add('hidden');
+                    const successMessage = document.getElementById('successMessage');
+                    successMessage.classList.add('show');
+                    // Dil ayarlarını uygula
+                    const currentLang = html.getAttribute('data-lang');
+                    updateAllText(currentLang);
+                } else {
+                    showNotification(
+                        html.getAttribute('data-lang') === 'tr' 
+                            ? 'Email gönderilirken hata oluştu: ' + data.error
+                            : 'Failed to send email: ' + data.error,
+                        'error'
+                    );
+                    submitButton.disabled = false;
+                    submitButton.textContent = html.getAttribute('data-lang') === 'tr' ? originalTextTr : originalTextEn;
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                showNotification(
+                    html.getAttribute('data-lang') === 'tr' 
+                        ? 'Email gönderilirken hata oluştu. Lütfen tekrar deneyin.' 
+                        : 'Failed to send email. Please try again.',
+                    'error'
+                );
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            });
+        });
+    }
+    
+    // Back to home button
+    const backButton = document.getElementById('backButton');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            // Form'u fade in ve success mesajını fade out
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            contactForm.classList.remove('hidden');
+            successMessage.classList.remove('show');
+            // Form'u temizle
+            contactForm.reset();
+            // Placeholder'ları güncelle
+            const currentLang = html.getAttribute('data-lang');
+            updateAllText(currentLang);
+        });
+    }
+    
     console.log('Portfolio sitesi başarıyla yüklendi!');
 });
+
+function showNotification(message, type) {
+    const notif = document.createElement('div');
+    notif.className = `notification ${type}`;
+    notif.textContent = message;
+    notif.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        color: white;
+        border-radius: 4px;
+        z-index: 1000;
+        animation: slideIn 0.3s ease-in;
+        max-width: 300px;
+        font-size: 14px;
+    `;
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 3000);
+}
 
 // MOUSE MOVE EFFECT (Bonus: İmleç hareketine göre glow efekti)
 document.addEventListener('mousemove', (e) => {

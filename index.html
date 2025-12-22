@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westscript | Anlamı Taşır, Yaşayan Metinler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
+    <title>westscribe | audiovisual translation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container">
-            <ul class="nav-links">
-                <li><a href="#contact" class="nav-contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
-            </ul>
             <div class="nav-controls">
-                <button class="lang-toggle" id="langToggle">EN</button>
+                <a href="javascript:void(0);" class="nav-contact contact-link" data-tr="İletişim" data-en="Contact">
+                    <img src="contact-light.png" alt="Contact" class="contact-logo contact-logo-light">
+                    <img src="contact-dark.png" alt="Contact" class="contact-logo contact-logo-dark">
+                </a>
+                <div class="lang-toggle-wrapper">
+                    <button class="lang-toggle" id="langToggle">
+                        <img src="lang-light.png" alt="Language" class="lang-icon lang-icon-light">
+                        <img src="lang-dark.png" alt="Language" class="lang-icon lang-icon-dark">
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option" data-lang="tr">TR</button>
+                        <button class="lang-option" data-lang="en">EN</button>
+                    </div>
+                </div>
                 <button class="theme-toggle" id="themeToggle">
                     <img src="light-off.png" alt="Theme" class="theme-icon" id="themeIcon">
                 </button>
@@ -29,7 +39,8 @@
                 <img src="light-logo.png" alt="Westscribe" class="logo-large logo-light">
                 <img src="dark-logo.png" alt="Westscribe" class="logo-large logo-dark">
             </div>
-            <p class="hero-description fade-in-delay-2" data-tr="Farklı tür ve formatlardaki görsel-işitsel içerikler için Türkçe–İngilizce / İngilizce–Türkçe çeviri, dublaj metni ve altyazı üretimine odaklanan profesyonel bir çalışma pratiğidir." data-en="A professional practice focused on Turkish-English / English-Turkish translation, dubbing scripts, and subtitle production for audiovisual content of various types and formats.">Farklı tür ve formatlardaki görsel-işitsel içerikler için Türkçe–İngilizce / İngilizce–Türkçe çeviri, dublaj metni ve altyazı üretimine odaklanan profesyonel bir çalışma pratiğidir.</p>
+            <p class="hero-description fade-in-delay-2" data-tr="Ekranda ve kayıtta sorunsuz çalışan metinler." data-en="Text that works seamlessly on screen and in the booth.">Text that works seamlessly on screen and in the booth.</p>
+            <p class="hero-description fade-in-delay-2" data-tr="Duyulduğunda doğal, izlendiğinde zahmetsiz." data-en="Natural to the ear, effortless to the eye.">Natural to the ear, effortless to the eye.</p>
         </div>
     </section>
 
@@ -37,22 +48,17 @@
     <section id="identity" class="identity">
         <div class="container">
             <div class="identity-content scroll-fade">
-                <h2 data-tr="Kimlik" data-en="Identity">Kimlik</h2>
-                <p data-tr="10+ yıllık sektör deneyimiyle; global yayın platformları, dublaj stüdyoları ve prodüksiyon ekipleri için yüzlerce projede, binlerce içerik teslimatı gerçekleştirilmiştir." data-en="With 10+ years of industry experience; hundreds of projects have been completed for global broadcasting platforms, dubbing studios, and production teams, delivering thousands of content.">10+ yıllık sektör deneyimiyle; global yayın platformları, dublaj stüdyoları ve prodüksiyon ekipleri için yüzlerce projede, binlerce içerik teslimatı gerçekleştirilmiştir.</p>
-                <p data-tr="Odak nettir: yayına girecek, seslendirilecek ve ekranda karşılığını bulacak metinler." data-en="The focus is clear: texts that will be broadcast, voiced, and find their equivalent on screen.">Odak nettir: yayına girecek, seslendirilecek ve ekranda karşılığını bulacak metinler.</p>
+                <h2 data-tr="Hakkında" data-en="About">About</h2>
+                <p data-tr="Westscribe, farklı tür ve formatlardaki görsel-işitsel içerikler için Türkçe–İngilizce / İngilizce–Türkçe çeviri, dublaj metni ve altyazı üretimine odaklanan profesyonel bir çalışma pratiğidir." data-en="Westscribe is a professional practice focused on Turkish–English / English–Turkish translation, dubbing script adaptation, and subtitle production for audiovisual content across a wide range of genres and formats.">Westscribe is a professional practice focused on Turkish–English / English–Turkish translation, dubbing script adaptation, and subtitle production for audiovisual content across a wide range of genres and formats.</p>
+                <p data-tr="<strong>10+</strong> yıllık sektör deneyimine sahip <strong>Batıkan Bahadır Ünsal</strong> tarafından yürütülen Westscribe; Netflix, Amazon Prime, Disney+, HBO Max, Discovery, BBC ve önde gelen yerel platformlar için 500'ün üzerinde projede, 5.000'e yaklaşan içerik teslimatı gerçekleştirmiştir." data-en="Led by <strong>Batıkan Bahadır Ünsal</strong>, with over <strong>10</strong> years of industry experience, Westscribe has completed over 500 projects and delivered nearly 5,000 individual content assets for platforms including Netflix, Amazon Prime, Disney+, HBO Max, Discovery, BBC, and leading local broadcasters.">Led by <strong>Batıkan Bahadır Ünsal</strong>, with over <strong>10</strong> years of industry experience, Westscribe has completed over 500 projects and delivered nearly 5,000 individual content assets for platforms including Netflix, Amazon Prime, Disney+, HBO Max, Discovery, BBC, and leading local broadcasters.</p>
+                <p data-tr="Türkiye'de Iyuno (eski Ak'la Kara), VSI, Lokalist, Studio DSE, Recart, Plint ve SDS dâhil olmak üzere çeşitli dublaj ve lokalizasyon stüdyolarıyla projeler yürütmüştür." data-en="In Türkiye, Westscribe has collaborated on projects with various dubbing and localization studios, including Iyuno (formerly Ak'la Kara), VSI, Lokalist, Studio DSE, Recart, Plint, and SDS.">In Türkiye, Westscribe has collaborated on projects with various dubbing and localization studios, including Iyuno (formerly Ak'la Kara), VSI, Lokalist, Studio DSE, Recart, Plint, and SDS.</p>
                 
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label" data-tr="Proje" data-en="Projects">Proje</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label" data-tr="Yıl" data-en="Years">Yıl</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">∞</div>
-                        <div class="stat-label" data-tr="Disiplin" data-en="Discipline">Disiplin</div>
+                <h3 class="projects-heading" data-tr="Projeler (alfabetik sırayla)" data-en="Projects (in alphabetical order)">Projects (in alphabetical order)</h3>
+                
+                <div class="title-carousel">
+                    <div class="carousel-container" id="titleCarousel">
+                        <div class="carousel-spacer"></div>
+                        <!-- Titles will be loaded here from titlelist.txt -->
                     </div>
                 </div>
             </div>
@@ -62,30 +68,34 @@
     <!-- FOCUS SECTION -->
     <section id="focus" class="focus">
         <div class="container">
-            <h2 class="section-heading scroll-fade" data-tr="Odak Alanı" data-en="Focus Area">Odak Alanı</h2>
+            <h2 class="section-heading scroll-fade" data-tr="Odak" data-en="Focus">Focus</h2>
             <div class="focus-content scroll-fade">
                 <div class="focus-main">
-                    <h3 data-tr="Westscribe yalnızca çeviri üretir." data-en="Westscribe produces only translation.">Westscribe yalnızca çeviri üretir.</h3>
-                    <p data-tr="Uçtan uca operasyon sunmaz; prodüksiyon zincirinin tamamına talip olmaz." data-en="Does not provide end-to-end operations; does not claim the entire production chain.">Uçtan uca operasyon sunmaz; prodüksiyon zincirinin tamamına talip olmaz.</p>
-                    <p data-tr="Çalışma kapsamı bilinçli şekilde sınırlıdır:" data-en="The scope of work is deliberately limited:">Çalışma kapsamı bilinçli şekilde sınırlıdır:</p>
+                    <h3 data-tr="Westscribe yalnızca metinle çalışır." data-en="Westscribe works exclusively with text.">Westscribe works exclusively with text.</h3>
+                    <p data-tr="Söylenecek, kaydedilecek ve ekranda karşılığını bulacak metinler üretir." data-en="Text created to be spoken, recorded, and realized on screen.">Text created to be spoken, recorded, and realized on screen.</p>
+                </div>
+
+                <div class="focus-main">
+                    <p data-tr="Odak alanı nettir ve bilinçli biçimde tanımlanmıştır.<br>Uçtan uca operasyon sunmaz, prodüksiyon zincirinin tamamına talip olmaz." data-en="The focus is clear and deliberately defined.<br>Does not provide end-to-end operations, nor does it claim ownership of the entire production chain.">The focus is clear and deliberately defined.<br>Westscribe does not provide end-to-end operations, nor does it claim ownership of the entire production chain.</p>
+                    <p class="scope-label" data-tr="Çalışma alanları:" data-en="The scope of work includes:">The scope of work includes:</p>
                 </div>
                 
                 <div class="focus-items">
                     <div class="focus-item">
-                        <h4 data-tr="Dublaj Çevirisi" data-en="Dubbing Translation">Dublaj Çevirisi</h4>
-                        <p data-tr="Senkron uyumlu, oyuncunun rahat oynayabileceği metinler." data-en="Sync-matched, natural texts for actors to perform.">Senkron uyumlu, oyuncunun rahat oynayabileceği metinler.</p>
+                        <h4 data-tr="Dublaj Metinleri" data-en="Dubbing Scripts">Dubbing Scripts</h4>
+                        <p data-tr="Zamanlama, ağız uyumu ve oyuncu performansı gözetilerek hazırlanmış, oynanabilir ve senkron uyumlu metinler." data-en="Sync-aware, performable texts written with timing, mouth movements, and actor performance in mind.">Sync-aware, performable texts written with timing, mouth movements, and actor performance in mind.</p>
                     </div>
                     <div class="focus-item">
-                        <h4 data-tr="Altyazı Çevirisi" data-en="Subtitle Translation">Altyazı Çevirisi</h4>
-                        <p data-tr="Teknik standartlara uygun, okunabilir ve doğru." data-en="Compliant with technical standards, readable and accurate.">Teknik standartlara uygun, okunabilir ve doğru.</p>
+                        <h4 data-tr="Altyazılar" data-en="Subtitles">Subtitles</h4>
+                        <p data-tr="Platformlara özgü teknik standartlara ve zamanlama gerekliliklerine uygun, okunabilir ve doğru altyazı metinleri." data-en="Readable, accurate subtitle texts prepared in compliance with platform-specific technical standards and timing requirements.">Readable, accurate subtitle texts prepared in compliance with platform-specific technical standards and timing requirements.</p>
                     </div>
                     <div class="focus-item">
-                        <h4 data-tr="Kayıt & Yayın Metinleri" data-en="Recording & Broadcast Scripts">Kayıt & Yayın Metinleri</h4>
-                        <p data-tr="İşin her aşamasında kontrol ve kalite garantisi." data-en="Quality control and assurance at every stage of production.">İşin her aşamasında kontrol ve kalite garantisi.</p>
+                        <h4 data-tr="Transkripsiyon ve Adaptasyon" data-en="Transcription & Adaptation">Transcription & Adaptation</h4>
+                        <p data-tr="Lokalizasyon, dublaj veya altyazı üretimi için kullanılan; doğru, tutarlı ve ihtiyaçlara göre uyarlanmış kaynak metinler." data-en="Accurate source texts and adapted scripts prepared for further localization, dubbing, or subtitle production.">Accurate source texts and adapted scripts prepared for further localization, dubbing, or subtitle production.</p>
                     </div>
                 </div>
 
-                <p class="focus-note" data-tr="Bu yaklaşım, çeviriyi bir ara adım olarak değil; metnin sahnede, kayıtta ve ekranda somutlaştığı bir üretim süreci olarak ele alır." data-en="This approach treats translation not as an intermediate step; but as a production process where the text is realized on stage, in recording, and on screen.">Bu yaklaşım, çeviriyi bir ara adım olarak değil; metnin sahnede, kayıtta ve ekranda somutlaştığı bir üretim süreci olarak ele alır.</p>
+                <p class="focus-note" data-tr="Bu yaklaşımda metin, ara bir adım değil; sahnede, kayıtta ve ekranda sorunsuz biçimde somutlaşması gereken temel bir üretim unsurudur." data-en="This approach treats text not as an intermediate step, but as a core production element; one that must work seamlessly on stage, in the booth, and on screen.">This approach treats text not as an intermediate step, but as a core production element; one that must work seamlessly on stage, in the booth, and on screen.</p>
             </div>
         </div>
     </section>
@@ -93,32 +103,29 @@
     <!-- PORTFOLIO SECTION -->
     <section id="approach" class="approach">
         <div class="container">
-            <h2 class="section-heading scroll-fade" data-tr="Yaklaşım" data-en="Approach">Yaklaşım</h2>
+            <h2 class="section-heading scroll-fade" data-tr="Yaklaşım" data-en="Approach">Approach</h2>
             
             <div class="approach-definition scroll-fade">
-                    <h3 data-tr="Westscribe için iyi bir çeviri;" data-en="For Westscribe, good translation is;">Westscribe için iyi bir çeviri;</h3>
-                <ul class="approach-list">
-                    <li data-tr="Seslendirme sanatçısının rahat oynayabileceği" data-en="Where the voice actor can perform comfortably">Seslendirme sanatçısının rahat oynayabileceği</li>
-                    <li data-tr="Yönetmenin ve kayıt ekibinin işini kolaylaştıran" data-en="That makes the director and recording crew's job easier">Yönetmenin ve kayıt ekibinin işini kolaylaştıran</li>
-                    <li data-tr="Karakterlerin tonunu ve ritmini koruyan metindir" data-en="A text that preserves the tone and rhythm of the characters">Karakterlerin tonunu ve ritmini koruyan metindir</li>
-                </ul>
+                    <h3 data-tr="Westscribe için iyi bir çeviri," data-en="For Westscribe, good translation is;">For Westscribe, good translation is;</h3>
+                    <p data-tr="yalnızca kaynak metne sadakatle değil; metnin sahada nasıl çalıştığıyla tanımlanır." data-en="not defined by the source text alone, but by how the text performs in practice.">not defined by the source text alone, but by how the text performs in practice.</p>
+                    <p data-tr="Seslendirme sanatçısının rahatça oynayabildiği, yönetmenin ve kayıt ekibinin işini destekleyen, karakterlerin tonunu, ritmini ve niyetini koruyan metinler hedeflenir." data-en="It is writing that actors can inhabit comfortably, that supports the director and recording crew, and that preserves the tone, rhythm, and intent of the original work.">It is writing that actors can inhabit comfortably,<br>that supports the director and recording crew,<br>and that preserves the tone, rhythm, and intent of the original work.</p>
             </div>
 
             <div class="approach-grid">
                 <div class="approach-block scroll-fade">
-                    <h4 data-tr="Bağlama Göre Yöntem" data-en="Method by Context">Bağlama Göre Yöntem</h4>
-                    <p><strong data-tr="Belgesel ve akademik:" data-en="Documentary and academic:">Belgesel ve akademik:</strong> <span data-tr="Teknik doğruluk ve kaynak sadakati önceliklidir." data-en="Technical accuracy and source fidelity are paramount.">Teknik doğruluk ve kaynak sadakati önceliklidir.</span></p>
-                    <p><strong data-tr="Dizi, film, komedi, animasyon:" data-en="Series, film, comedy, animation:">Dizi, film, komedi, animasyon:</strong> <span data-tr="Yerelleştirme, diyalog akışı ve yaratıcılık öne çıkar." data-en="Localization, dialog flow, and creativity stand out.">Yerelleştirme, diyalog akışı ve yaratıcılık öne çıkar.</span></p>
+                    <h4 data-tr="Yaklaşım, içeriğin bağlamına göre şekillenir." data-en="Approach varies by context.">Approach varies by context.</h4>
+                    <p data-tr="Belgesel ve akademik projelerde teknik doğruluk ve kaynak sadakati esastır." data-en="In documentary and academic content, technical accuracy and fidelity to the source are essential.">In documentary and academic content, technical accuracy and fidelity to the source are essential.</p>
+                    <p data-tr="Dizi, film, komedi ve animasyon projelerinde ise yerelleştirme, diyalog akışı ve yaratıcı adaptasyon öne çıkar." data-en="In series, films, comedy, and animation, localization, dialog flow, and creative adaptation take priority.">In series, films, comedy, and animation, localization, dialog flow, and creative adaptation take priority.</p>
                 </div>
                 
                 <div class="approach-block scroll-fade">
-                    <h4 data-tr="Karakterin Dili" data-en="Character's Language">Karakterin Dili</h4>
-                    <p data-tr="Her karakterin kendine özgü bir dili vardır. Önce oyuncunun oynayabileceği, ardından kaydın sorunsuz ilerleyebileceği bir metin hedeflenir." data-en="Each character has their own unique language. We target text that the actor can perform first, then the recording can proceed smoothly.">Her karakterin kendine özgü bir dili vardır. Önce oyuncunun oynayabileceği, ardından kaydın sorunsuz ilerleyebileceği bir metin hedeflenir.</p>
+                    <h4 data-tr="Karakterler" data-en="Characters">Characters</h4>
+                    <p data-tr="Karakterler tekil varlıklar olarak ele alınır; her birinin kendine özgü bir dili vardır. Metin, öncelikle performans için şekillendirilir; böylece kayıt süreci doğal ve sorunsuz ilerler." data-en="Characters are treated as individuals, each with a distinct voice. The text is shaped first for performance, so that recording can proceed smoothly and naturally.">Characters are treated as individuals, each with a distinct voice. The text is shaped first for performance, so that recording can proceed smoothly and naturally.</p>
                 </div>
                 
                 <div class="approach-block scroll-fade">
-                    <h4 data-tr="Ağız Uyumu" data-en="Lip Sync">Ağız Uyumu</h4>
-                    <p data-tr="Metnin sesle buluştuğunda doğal ve zahmetsiz biçimde karşılığını bulması esastır. Bu, çevirinin kalitesinin ölçüsüdür." data-en="It is essential that the text finds its equivalent naturally and effortlessly when it meets the voice. This is the measure of translation quality.">Metnin sesle buluştuğunda doğal ve zahmetsiz biçimde karşılığını bulması esastır. Bu, çevirinin kalitesinin ölçüsüdür.</p>
+                    <h4 data-tr="Ağız Uyumu" data-en="Lip Sync">Lip Sync</h4>
+                    <p data-tr="Ağız uyumu sürecin ayrılmaz bir parçasıdır. Bir çeviri, sesle buştuğunda zahmetsiz ve doğal biçimde karşılığını buluyorsa tamamlanmış sayılır." data-en="Lip sync is not an afterthought. A translation is considered complete only when it meets the voice naturally; effortless to perform, seamless in recording, and convincing on screen.">Lip sync is not an afterthought. A translation is considered complete only when it meets the voice naturally; effortless to perform, seamless in recording, and convincing on screen.</p>
                 </div>
             </div>
         </div>
@@ -127,25 +134,30 @@
     <!-- CONTACT SECTION -->
     <section id="workflow" class="workflow">
         <div class="container">
-            <h2 class="section-heading scroll-fade" data-tr="Workflow & Güven" data-en="Workflow & Trust">Workflow & Güven</h2>
+            <h2 class="section-heading scroll-fade" data-tr="Workflow & Güven" data-en="Workflow & Trust">Workflow & Trust</h2>
             
             <div class="workflow-content scroll-fade">
                 <div class="workflow-block">
-                    <h3 data-tr="Hız ve Kalite" data-en="Speed and Quality">Hız ve Kalite</h3>
-                    <p data-tr="Westscribe, dar teslim takvimlerinde çalışmaya alışkındır. Aynı gün teslim, gece ve hafta sonu çalışma dâhil olmak üzere projeler güvenle tamamlanır." data-en="Westscribe is accustomed to working with tight delivery schedules. Projects, including same-day delivery, night and weekend work, are completed safely.">Westscribe, dar teslim takvimlerinde çalışmaya alışkındır. Aynı gün teslim, gece ve hafta sonu çalışma dâhil olmak üzere projeler güvenle tamamlanır.</p>
-                    <p data-tr="Bu hız, kaliteyi ikinci plana atan bir tempo değil; disiplinli bir çalışma pratiğinin, yıllar içinde oturmuş bir workflow'un ve üretim sürecinin doğru kurgulanmasının sonucudur." data-en="This speed is not a pace that puts quality second; but the result of a disciplined work practice, an established workflow over years, and a well-designed production process.">Bu hız, kaliteyi ikinci plana atan bir tempo değil; disiplinli bir çalışma pratiğinin, yıllar içinde oturmuş bir workflow'un ve üretim sürecinin doğru kurgulanmasının sonucudur.</p>
-                    <p data-tr="Projenin zorluk derecesine bağlı olarak, günde ikiden fazla 45 dakikalık bölümün teslimi mümkündür." data-en="Depending on the difficulty level of the project, delivery of more than two 45-minute segments per day is possible.">Projenin zorluk derecesine bağlı olarak, günde ikiden fazla 45 dakikalık bölümün teslimi mümkündür.</p>
+                    <h3 data-tr="Hız & Teslim" data-en="Speed & Delivery">Speed & Delivery</h3>
+                    <p data-tr="Westscribe, dar teslim takvimlerinde güvenle çalışacak şekilde yapılandırılmış bir iş pratiğine sahiptir.
+Aynı gün teslim, gece ve hafta sonu çalışma gerektiren projeler, ihtiyaç duyulduğunda sürecin doğal bir parçasıdır." data-en="Westscribe is structured to work reliably under tight delivery schedules.
+Same-day delivery, night and weekend workflows are part of standard practice when required.">Westscribe is structured to work reliably under tight delivery schedules.
+Same-day delivery, night and weekend workflows are part of standard practice when required.</p>
+                    <p data-tr="Hız, hiçbir zaman kalite pahasına alınan bir risk değildir. Disiplinli bir üretim sürecinin, yıllar içinde olgunlaşmış bir iş akışının ve kaliteyi baştan korumaya yönelik kararların sonucudur." data-en="Speed is never treated as a shortcut. It is the result of a disciplined production process, a mature workflow refined over years, and decisions made early to protect quality throughout the project.">Speed is never treated as a shortcut. It is the result of a disciplined production process, a mature workflow refined over years, and decisions made early to protect quality throughout the project.</p>
+                    <p data-tr="Projenin karmaşıklığına bağlı olarak, günde ikiden fazla 45 dakikalık bölümün teslimi mümkündür; bu süreçte doğruluk ve performans bütünlüğü korunur." data-en="Depending on complexity, the delivery of more than two 45-minute episodes per day is achievable without compromising accuracy or performance.">Depending on complexity, the delivery of more than two 45-minute episodes per day is achievable without compromising accuracy or performance.</p>
                 </div>
 
                 <div class="workflow-block">
-                    <h3 data-tr="Revizyon Süreci" data-en="Revision Process">Revizyon Süreci</h3>
-                    <p data-tr="Revizyon süreçleri hızlı ve kontrollü yürütülür. Gerekirse QC'den geçmiş metinler yeniden taranır, hatalı düzeltmeler geri alınır ve alternatif çözümler sunulur." data-en="Revision processes are carried out quickly and in a controlled manner. If necessary, QC-approved texts are re-scanned, incorrect corrections are reversed, and alternative solutions are offered.">Revizyon süreçleri hızlı ve kontrollü yürütülür. Gerekirse QC'den geçmiş metinler yeniden taranır, hatalı düzeltmeler geri alınır ve alternatif çözümler sunulur.</p>
-                    <p data-tr="Kalite, teslim disiplini ve metnin sesle buluştuğunda sorunsuz biçimde karşılığını bulması değişmez." data-en="Quality, delivery discipline, and the text meeting the voice seamlessly remain unchanged.">Kalite, teslim disiplini ve metnin sesle buluştuğunda sorunsuz biçimde karşılığını bulması değişmez.</p>
+                    <h3 data-tr="Revizyon & Kalite Kontrol" data-en="Revision & Quality Control">Revision & Quality Control</h3>
+                    <p data-tr="Revizyon süreçleri hızlı ve kontrollü ilerler.
+QC geri bildirimleri dikkatle ele alınır; gerekli durumlarda onaylı metinler yeniden değerlendirilir, hatalı düzeltmeler geri alınır ve alternatif çözümler net biçimde sunulur." data-en="Revision workflows are fast and controlled. QC feedback is handled carefully; approved texts are re-evaluated when needed, incorrect changes are rolled back, and alternative solutions are proposed with clarity.">Revision workflows are fast and controlled. QC feedback is handled carefully; approved texts are re-evaluated when needed, incorrect changes are rolled back, and alternative solutions are proposed with clarity.</p>
+                    <p data-tr="Kalite, teslim disiplini ve metnin sesle buluştuğunda doğal biçimde karşılığını bulması değişmez." data-en="Quality, delivery discipline, and the text's ability to meet the voice naturally remain constant.">Quality, delivery discipline, and the text's ability to meet the voice naturally remain constant.</p>
                 </div>
 
                 <div class="workflow-block">
-                    <h3 data-tr="Güvenlik & NDA" data-en="Security & NDA">Güvenlik & NDA</h3>
-                    <p data-tr="Tüm materyaller NDA gerekliliklerine uygun şekilde ele alınır. Video ve ses dosyaları iş tamamlandıktan sonra silinir; teslim edilen metinler güvenli biçimde arşivlenir." data-en="All materials are handled in accordance with NDA requirements. Video and audio files are deleted after work is completed; delivered texts are archived securely.">Tüm materyaller NDA gerekliliklerine uygun şekilde ele alınır. Video ve ses dosyaları iş tamamlandıktan sonra silinir; teslim edilen metinler güvenli biçimde arşivlenir.</p>
+                    <h3 data-tr="Güvenlik & NDA" data-en="Security & NDA">Security & NDA</h3>
+                    <p data-tr="Tüm materyaller NDA gerekliliklerine tam uyumla ele alınır.
+Video ve ses dosyaları iş tamamlandığında silinir; teslim edilen metinler güvenli şekilde saklanır ve üçüncü taraflarla paylaşılmaz." data-en="All materials are handled in full compliance with NDA requirements. Video and audio files are deleted upon project completion. Delivered texts are retained securely, with controlled access and no external sharing.">All materials are handled in full compliance with NDA requirements. Video and audio files are deleted upon project completion. Delivered texts are retained securely, with controlled access and no external sharing.</p>
                 </div>
             </div>
         </div>
@@ -154,38 +166,46 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-heading scroll-fade" data-tr="İletişim" data-en="Contact">İletişim</h2>
+            <h2 class="section-heading scroll-fade" data-tr="İletişim" data-en="Contact">Contact</h2>
             
             <div class="contact-content scroll-fade">
-                <div class="contact-info">
-                    <p data-tr="Dublaj stüdyoları, altyazı ve lokalizasyon odaklı yapılar, prodüksiyon ve post-prodüksiyon ekipleri için güvenilir bir çalışma ortağıdır." data-en="A reliable working partner for dubbing studios, subtitle and localization-focused companies, production and post-production teams.">Dublaj stüdyoları, altyazı ve lokalizasyon odaklı yapılar, prodüksiyon ve post-prodüksiyon ekipleri için güvenilir bir çalışma ortağıdır.</p>
+                <div class="contact-info-box">
+                    <h4 class="contact-name" data-tr="Batıkan Bahadır Ünsal" data-en="Batıkan Bahadır Ünsal">Batıkan Bahadır Ünsal</h4>
                     
                     <div class="contact-methods">
-                        <div class="contact-method">
-                            <h4 data-tr="E-Mail" data-en="E-Mail">E-Mail</h4>
-                            <p><a href="mailto:bbunsal@gmail.com">bbunsal@gmail.com</a></p>
-                        </div>
-                        <div class="contact-method">
-                            <h4 data-tr="Telefon" data-en="Phone">Telefon</h4>
-                            <p><a href="tel:+905334517349">+90 533 451 73 49</a></p>
-                        </div>
+                        <p><a href="mailto:bbunsal@gmail.com">bbunsal@gmail.com</a></p>
+                        <p><a href="tel:+905334517349">+90 533 451 73 49</a></p>
+                    </div>
+
+                    <div class="contact-footer-logo">
+                        <a href="#home" class="footer-logo-link">
+                            <img src="light-logo.png" alt="Westscribe" class="logo-footer logo-light">
+                            <img src="dark-logo.png" alt="Westscribe" class="logo-footer logo-dark">
+                        </a>
                     </div>
                 </div>
 
-                <form class="contact-form" action="https://formsubmit.co/bbunsal@gmail.com" method="POST">
-                    <input type="text" placeholder="Adınız" data-tr-placeholder="Adınız" data-en-placeholder="Your Name" name="name" required>
-                    <input type="email" placeholder="E-mail" data-tr-placeholder="E-mail" data-en-placeholder="Email" name="email" required>
-                    <textarea placeholder="Mesajınız..." data-tr-placeholder="Mesajınız..." data-en-placeholder="Your Message..." rows="6" name="message" required></textarea>
-                    <button type="submit" class="submit-button" data-tr="Gönder" data-en="Send">Gönder</button>
-                </form>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <input type="text" placeholder="Adınız" data-tr-placeholder="Adınız" data-en-placeholder="Your Name" id="contactName" required>
+                        <input type="email" placeholder="E-mail" data-tr-placeholder="E-mail" data-en-placeholder="Email" id="contactEmail" required>
+                        <textarea placeholder="Mesajınız..." data-tr-placeholder="Mesajınız..." data-en-placeholder="Your Message..." rows="5" id="contactMessage" required></textarea>
+                        <button type="submit" class="submit-button" data-tr="Gönder" data-en="Send">Gönder</button>
+                    </form>
+
+                    <div class="success-message-box" id="successMessage">
+                        <h3 data-tr="Mesajınız alınmıştır." data-en="Your message has been received.">Your message has been received.</h3>
+                        <p data-tr="En kısa sürede dönüş yapılacaktır." data-en="You will be contacted shortly.">You will be contacted shortly.</p>
+                        <button class="success-button" id="backButton" data-tr="Geri" data-en="Back">Back</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <p data-tr="© 2025 Westscribe. Anlamı taşır, yaşayan metinler." data-en="© 2025 Westscribe. Meaning carried, living texts.">© 2025 Westscribe. Anlamı taşır, yaşayan metinler.</p>
+            <p data-tr="Sorunsuz metinler." data-en="Text that works.">Text that works.</p>
         </div>
     </footer>
 
