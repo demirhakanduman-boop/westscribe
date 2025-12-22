@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             // Flask backend'e gönder
-            fetch('http://localhost:5000/api/contact', {
+            fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
