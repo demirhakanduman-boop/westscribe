@@ -7,60 +7,68 @@ A bilingual (Turkish/English) portfolio website for Westscribe, a professional a
 - **Bilingual Content:** Full Turkish/English support with language toggle
 - **Responsive Design:** Mobile-first approach with adaptive layouts
 - **Theme Support:** Light/dark mode with auto-detection based on time
-- **Contact Form:** Email integration via Flask backend
-- **Project Carousel:** Interactive scrollable project list
+- **Contact Form:** Email integration via EmailJS (client-side)
+- **Project Carousel:** Interactive scrollable project list (3 columns × 7 items)
 - **Smooth Animations:** Scroll-triggered fade-ins and parallax effects
 
 ## Tech Stack
 
-- **Backend:** Flask (Python)
-- **Frontend:** Vanilla HTML/CSS/JavaScript (no build tools)
-- **Email:** Gmail SMTP integration
+- **Frontend:** Vanilla HTML/CSS/JavaScript (no build tools, no frameworks)
+- **Email:** EmailJS (client-side, no backend needed)
 - **Styling:** CSS custom properties for theming
+- **Deployment:** Static hosting (Vercel, Netlify, GitHub Pages, etc.)
 
 ## Project Structure
 
 ```
 portfolio-site/
-├── app.py              # Flask backend
+├── app.py              # Simple HTTP server (for local dev only)
 ├── index.html          # Single-page HTML
 ├── style.css           # All styling with theme variables
-├── script.js           # All interactivity
-├── titlelist.txt       # Project list
+├── script.js           # All interactivity (EmailJS integration)
+├── titlelist.txt       # 600+ project titles for carousel
+├── requirements.txt    # No external Python dependencies
+├── EMAILJS_SETUP.md    # EmailJS configuration guide
 └── [images]            # Logo, icons, and assets
 ```
 
-## Setup
+## Setup for Local Development
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. **No dependencies required!** Just Python's built-in `http.server`
 
-2. Create `.env` file:
-   ```
-   GMAIL_ADDRESS=your-email@gmail.com
-   GMAIL_PASSWORD=your-app-password
-   RECIPIENT_EMAIL=contact@westscribe.com
-   ```
-
-3. Run development server:
+2. Run development server:
    ```bash
    python app.py
    ```
-
    The site will be available at `http://localhost:5000`
 
-## Environment Variables
+## Email Setup (EmailJS)
 
-- `GMAIL_ADDRESS`: Gmail account for sending emails
-- `GMAIL_PASSWORD`: Gmail App Password (not regular password)
-- `RECIPIENT_EMAIL`: Where contact form submissions go
+The contact form uses **EmailJS** for email handling (completely client-side).
+
+1. Go to [emailjs.com](https://www.emailjs.com/) and create a free account
+2. Get your **Service ID**, **Template ID**, and **Public Key**
+3. Update these values in `script.js`:
+   ```javascript
+   const EMAILJS_SERVICE_ID = 'service_YOUR_ID';
+   const EMAILJS_TEMPLATE_ID = 'template_YOUR_ID';
+   const EMAILJS_PUBLIC_KEY = 'pk_YOUR_KEY';
+   ```
+
+See [EMAILJS_SETUP.md](EMAILJS_SETUP.md) for detailed instructions.
 
 ## Deployment
 
-This app is ready for Vercel deployment. Configure environment variables in Vercel dashboard.
+### Static Hosting (Vercel, Netlify, GitHub Pages)
+Simply upload the files - no backend needed!
+
+### Vercel with `vercel.json`
+Already configured. Just run:
+```bash
+vercel
+```
 
 ## License
 
 © 2025 Westscribe. All rights reserved.
+

@@ -1,3 +1,30 @@
+// EMAILJS INITIALIZATION
+// Set your EmailJS Service ID, Template ID, and Public Key here
+// Get these from: https://dashboard.emailjs.com/
+const EMAILJS_SERVICE_ID = 'service_6lg7mop'; // Replace with your service ID
+const EMAILJS_TEMPLATE_ID = 'template_hclzm4r'; // Replace with your template ID
+const EMAILJS_PUBLIC_KEY = '4BddHmDDlVDpObFGZ'; // Replace with your public key
+
+// Initialize EmailJS (this will be called when DOM is ready)
+function initEmailJS() {
+    if (typeof emailjs === 'undefined') {
+        console.error('❌ EmailJS library not loaded! Check CDN connection.');
+        showNotification(
+            html.getAttribute('data-lang') === 'tr'
+                ? 'EmailJS yüklenmedi. İnternet bağlantısını kontrol et.'
+                : 'EmailJS failed to load. Check your internet connection.',
+            'error'
+        );
+        return false;
+    }
+    
+    emailjs.init({
+        publicKey: EMAILJS_PUBLIC_KEY,
+    });
+    console.log('✅ EmailJS initialized');
+    return true;
+}
+
 // LANGUAGE & THEME TOGGLE
 const langToggle = document.getElementById('langToggle');
 const themeToggle = document.getElementById('themeToggle');
@@ -230,11 +257,31 @@ document.addEventListener('click', (e) => {
 
 // FORM HANDLER (Flask Backend)
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize EmailJS
+    const emailjsLoaded = initEmailJS();
+    
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
+        console.log('✅ Contact form found');
         contactForm.addEventListener('submit', (e) => {
+            console.log('📝 Form submit clicked');
             e.preventDefault();
+            console.log('✅ preventDefault worked');
+            
+            // EmailJS check
+            if (typeof emailjs === 'undefined') {
+                console.error('❌ EmailJS not available');
+                showNotification(
+                    html.getAttribute('data-lang') === 'tr'
+                        ? 'EmailJS yüklenmedi. Sayfayı yenile ve tekrar dene.'
+                        : 'EmailJS not loaded. Refresh and try again.',
+                    'error'
+                );
+                submitButton.disabled = false;
+                submitButton.textContent = html.getAttribute('data-lang') === 'tr' ? originalTextTr : originalTextEn;
+                return;
+            }
             
             const submitButton = contactForm.querySelector('.submit-button');
             const originalTextTr = submitButton.getAttribute('data-tr');
@@ -244,53 +291,50 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.disabled = true;
             submitButton.textContent = currentLang === 'tr' ? 'Gönderiliyor...' : 'Sending...';
             
-            const formData = {
-                name: document.getElementById('contactName').value,
-                email: document.getElementById('contactEmail').value,
-                message: document.getElementById('contactMessage').value
+            // Form verilerini EmailJS'e uygun şekilde hazırla
+            const templateParams = {
+                from_name: document.getElementById('contactName').value,
+                from_email: document.getElementById('contactEmail').value,
+                message: document.getElementById('contactMessage').value,
+                reply_to: document.getElementById('contactEmail').value
             };
             
-            // Flask backend'e gönder
-            fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log('Email sent successfully');
-                    // Form'u fade out ve success mesajını fade in
-                    contactForm.classList.add('hidden');
-                    const successMessage = document.getElementById('successMessage');
-                    successMessage.classList.add('show');
-                    // Dil ayarlarını uygula
-                    const currentLang = html.getAttribute('data-lang');
-                    updateAllText(currentLang);
-                } else {
-                    showNotification(
-                        html.getAttribute('data-lang') === 'tr' 
-                            ? 'Email gönderilirken hata oluştu: ' + data.error
-                            : 'Failed to send email: ' + data.error,
-                        'error'
-                    );
-                    submitButton.disabled = false;
-                    submitButton.textContent = html.getAttribute('data-lang') === 'tr' ? originalTextTr : originalTextEn;
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+            // EmailJS ile gönder
+            try {
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(function(response) {
+                        console.log('Email sent successfully', response.status, response.text);
+                        // Form'u fade out ve success mesajını fade in
+                        contactForm.classList.add('hidden');
+                        const successMessage = document.getElementById('successMessage');
+                        successMessage.classList.add('show');
+                        // Dil ayarlarını uygula
+                        const currentLang = html.getAttribute('data-lang');
+                        updateAllText(currentLang);
+                        submitButton.disabled = false;
+                    })
+                    .catch(function(error) {
+                        console.error('Error:', error);
+                        showNotification(
+                            html.getAttribute('data-lang') === 'tr' 
+                                ? 'Email gönderilirken hata oluştu. Lütfen tekrar deneyin.' 
+                                : 'Failed to send email. Please try again.',
+                            'error'
+                        );
+                        submitButton.disabled = false;
+                        submitButton.textContent = html.getAttribute('data-lang') === 'tr' ? originalTextTr : originalTextEn;
+                    });
+            } catch(error) {
+                console.error('Submit error:', error);
                 showNotification(
                     html.getAttribute('data-lang') === 'tr' 
-                        ? 'Email gönderilirken hata oluştu. Lütfen tekrar deneyin.' 
-                        : 'Failed to send email. Please try again.',
+                        ? 'Bir hata oluştu. Lütfen tekrar deneyin.' 
+                        : 'An error occurred. Please try again.',
                     'error'
                 );
                 submitButton.disabled = false;
-                submitButton.textContent = originalText;
-            });
+                submitButton.textContent = html.getAttribute('data-lang') === 'tr' ? originalTextTr : originalTextEn;
+            }
         });
     }
     
