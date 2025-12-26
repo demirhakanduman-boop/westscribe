@@ -360,7 +360,7 @@ html[data-theme="light"] .logo-dark {
 }
 
 .hero p {
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
     word-spacing: 0.1em;
     font-size: 14px;
     color: var(--text-secondary);
